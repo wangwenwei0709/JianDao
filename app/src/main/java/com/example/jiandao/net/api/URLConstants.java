@@ -10,4 +10,24 @@ public class URLConstants {
     //栏目列表
     public static String COLUMN_LIST="api/column/columnlist";
 
+    //    手机验证码登录接口
+    public static String LOGIN = "api/user/smslogin";
+
+
+    //    获取验证码接口
+    public static String SENDVERIFIED = "api/sms/sendsms";
+
+    //    验证验证码是否正确
+    public static String CHECKSMSCODE= "api/sms/checksmscode";
+
+    //用户注册
+    public static String REGISTER= "api/user/register";
+
+    //密码邮箱登录
+    public static String PASSWORDLOGIN= "api/user/login";
+
+    //忘记密码
+    public static String SAVEPASSWORD="app/v_1_1/user/savepassword";
+
+
 }

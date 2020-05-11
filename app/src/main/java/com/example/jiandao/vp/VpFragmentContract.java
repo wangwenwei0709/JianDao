@@ -8,9 +8,8 @@ import java.util.List;
 
 public class VpFragmentContract {
 
-
     public interface INewsView extends BaseView {
-        void  setRecommendList(NewsBean.DataBean dataBean);
+        void  setRecommendList(NewsBean dataBean);
     }
     public interface INewsMode{
         <T> void getRecommendList(String tabID, INetCallBack<T> iNetCallBack);

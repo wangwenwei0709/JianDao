@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -72,15 +73,12 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
         }
 
         tab(columnBean);
-
         for (int i = 0; i < list.size();   i++) {
             TextView view = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.textitem, null);
             view.setGravity(Gravity.CENTER);
             view.setText(list.get(i).getName());
             tabRecommend.getTabAt(i).setCustomView(view);
         }
-
-
     }
 
     private void tab(ColumnBean columnBean) {
@@ -89,6 +87,8 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
         vpRecommend.setAdapter(vpAdapter);
         tabRecommend.setupWithViewPager(vpRecommend);
         vpRecommend.setCurrentItem(0);
+
+
 
         tabRecommend.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

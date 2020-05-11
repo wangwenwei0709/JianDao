@@ -15,7 +15,7 @@ public class VpPresenter extends BasePresenter<VpFragmentContract.INewsView> imp
         iNewsMode.getRecommendList(id, new INetCallBack<NewsBean>() {
             @Override
             public void onSuccess(NewsBean newsBean) {
-                mview.setRecommendList(newsBean.getData());
+                mview.setRecommendList(newsBean);
             }
 
             @Override

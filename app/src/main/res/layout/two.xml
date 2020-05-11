@@ -10,10 +10,10 @@
     <TextView
         android:padding="7dp"
         android:textSize="17sp"
+        android:textColor="@color/black"
         android:layout_toRightOf="@+id/iv_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:id="@+id/tv_two"/>
     <TextView
         android:paddingTop="7dp"

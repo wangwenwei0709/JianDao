@@ -7,12 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VpBannerAdapter extends PagerAdapter {
 
-    private ArrayList<View> views;
+    private List<View> views;
 
-    public VpBannerAdapter(ArrayList<View> views) {
+    public VpBannerAdapter(List<View> views) {
         this.views = views;
     }
 
