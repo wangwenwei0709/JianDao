@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".passwordLogin.affirmpw.AffrimPwActivity">
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/close_affrimpw"
+        android:background="@drawable/ic_close"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置密码"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/close_affrimpw"
+        android:id="@+id/tv_affrimpw"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/close_affrimpw"/>
+    <View
+        android:id="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/tv_affrimpw"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/hui"/>
+    <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_affrimpw"
+        android:hint="新密码"
+        />
+
+
+    <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/password_affrimpw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password2_affrimpw"
+        android:hint="确认密码"
+        />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/password2_affrimpw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/whait"
+        android:text="完成"
+        android:layout_marginTop="15dp"
+        android:id="@+id/ok_affrimpw"
+        android:background="@drawable/me_sign"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
