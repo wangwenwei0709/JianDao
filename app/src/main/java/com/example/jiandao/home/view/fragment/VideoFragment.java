@@ -2,7 +2,9 @@ package com.example.jiandao.home.view.fragment;
 
 import android.view.View;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jiandao.R;
@@ -51,6 +53,7 @@ public class VideoFragment extends BaseFragment<VideoFragmentPresenter> implemen
     @Override
     public void setVideoList(VideoFragmentBean videoFragmentBean) {
         rvVideo.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvVideo.addItemDecoration(new DividerItemDecoration(getContext(), OrientationHelper.VERTICAL));
         adapter = new VideoFragmentRvAdapter(videoFragmentBean, getActivity());
         rvVideo.setAdapter(adapter);
     }

@@ -32,8 +32,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
     @BindView(R.id.vp_recommend)
     ViewPager vpRecommend;
 
-    private ArrayList<Fragment> fragments;
-    private List<ColumnBean.DataBean.ListBean> list;
+    private List<VpFragment> fragments = new ArrayList<>();
 
 
     @Override
@@ -64,31 +63,25 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     public void setColumnList(ColumnBean columnBean) {
-        list = columnBean.getData().getList();
-        fragments = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < columnBean.getData().getList().size(); i++) {
             VpFragment vpFragment = new VpFragment(columnBean.getData().getList().get(i).getId());
-
             fragments.add(vpFragment);
         }
 
         tab(columnBean);
-        for (int i = 0; i < list.size();   i++) {
+        for (int i = 0; i < columnBean.getData().getList().size();   i++) {
             TextView view = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.textitem, null);
             view.setGravity(Gravity.CENTER);
-            view.setText(list.get(i).getName());
+            view.setText(columnBean.getData().getList().get(i).getName());
             tabRecommend.getTabAt(i).setCustomView(view);
         }
     }
 
-    private void tab(ColumnBean columnBean) {
-
-        VpAdapter vpAdapter = new VpAdapter(getFragmentManager(), fragments);
+    private void tab(final ColumnBean columnBean) {
+        VpAdapter vpAdapter = new VpAdapter(getChildFragmentManager(), fragments);
         vpRecommend.setAdapter(vpAdapter);
         tabRecommend.setupWithViewPager(vpRecommend);
-        vpRecommend.setCurrentItem(0);
-
-
+        vpRecommend.setOffscreenPageLimit(columnBean.getData().getList().size());
 
         tabRecommend.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -122,7 +115,5 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     public void setRecommendList(RecommendBean recommendBean) {
-
-
     }
 }

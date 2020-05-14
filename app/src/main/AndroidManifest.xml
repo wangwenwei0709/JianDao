@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         android:name=".app.MyApplication"
         android:allowBackup="true"
         android:configChanges="orientation|screenSize|keyboardHidden"
@@ -18,7 +20,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".passwordLogin.affirmpw.AffrimPwActivity"></activity>
+        <activity android:name=".details.view.DetailsActivity"></activity>
+        <activity android:name=".passwordLogin.affirmpw.AffrimPwActivity" />
         <activity android:name=".passwordLogin.forgetpw.ForgetPwActivity" />
         <activity android:name=".register.next.NextRegisterActivity" />
         <activity android:name=".passwordLogin.PasswordLoginActivity" />

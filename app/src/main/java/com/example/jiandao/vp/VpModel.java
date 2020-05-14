@@ -20,7 +20,7 @@ public class VpModel implements VpFragmentContract.INewsMode{
 //        此处  -- 登录以后，  需要修改
 
         for (String key: commonParams.keySet()) {
-            Log.e("TAG","key="+key+",values="+commonParams.get(key));
+            Log.e("TAGEEE","key="+key+",values="+commonParams.get(key));
         }
         NetWorkFactory.getInstance().getNetWork().get(URLConstants.RECOMMEND_LIST,commonParams,iNetCallBack);
     }

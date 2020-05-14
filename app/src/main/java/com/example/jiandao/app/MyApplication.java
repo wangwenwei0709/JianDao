@@ -3,16 +3,20 @@ package com.example.jiandao.app;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.jiandao.utils.Constants;
+import com.example.jiandao.utils.SpUtil;
 import com.linsh.utilseverywhere.Utils;
 import com.squareup.leakcanary.LeakCanary;
 
 public class MyApplication extends Application {
 
     public static MyApplication myApplication;
+    public static boolean isLogin;
 
     @Override
     public void onCreate() {
@@ -22,6 +26,13 @@ public class MyApplication extends Application {
         initLeakCanary();
 //        注册监听每个acitivyt的生命周期，便于栈管理
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
+
+        String token = (String) SpUtil.getParam(Constants.TOKEN, "");
+        if (TextUtils.isEmpty(token)){
+            isLogin = false;
+        }else {
+            isLogin = true;
+        }
     }
 
     ActivityLifecycleCallbacks activityLifecycleCallbacks=new ActivityLifecycleCallbacks() {

@@ -1,6 +1,7 @@
 package com.example.jiandao.vp;
 
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.jiandao.R;
 import com.example.jiandao.base.BaseFragment;
 import com.example.jiandao.base.BaseLazyFragment;
+import com.example.jiandao.details.view.DetailsActivity;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -78,6 +80,19 @@ public class VpFragment extends BaseLazyFragment<VpPresenter> implements VpFragm
         rvVp.addItemDecoration(new DividerItemDecoration(getContext(), OrientationHelper.VERTICAL));
         adapter = new VpRvAdapter(newsBean,getActivity());
         rvVp.setAdapter(adapter);
+
+        adapter.setOnItemClick(new VpRvAdapter.OnItemClick() {
+            @Override
+            public void onClick(int position) {
+                NewsBean.DataBean.ArticleListBean articleListBean = newsBean.getData().getArticle_list().get(position);
+                String id = articleListBean.getId();
+                String link = articleListBean.getLink();
+                Intent intent = new Intent(getContext(), DetailsActivity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("link",link);
+                startActivity(intent);
+            }
+        });
     }
 
 

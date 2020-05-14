@@ -23,6 +23,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         initListener();
     }
 
+
     protected abstract P initPresenter();
 
     public abstract void initView();

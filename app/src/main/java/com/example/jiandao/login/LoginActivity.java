@@ -21,6 +21,8 @@ import com.example.jiandao.passwordLogin.PasswordLoginActivity;
 import com.example.jiandao.register.RegisterActivity;
 import com.tencent.mmkv.MMKV;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -164,12 +166,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 //        Log.e("TAG", "我的昵称是："+loginBean.getData().getUser_info().getNickname());
         if (loginBean.getCode()==1){
             Toast.makeText(this, "登录成功返回数据，且code等于1,跳转Home", Toast.LENGTH_SHORT).show();
-            MMKV mmkv = MMKV.defaultMMKV();
-            mmkv.encode("token", loginBean.getData().getToken().getValue());
-            mmkv.encode("expire_time", loginBean.getData().getToken().getExpire_time());
-            mmkv.encode("head_url", loginBean.getData().getUser_info().getHead_url());
-            mmkv.encode("nickname", loginBean.getData().getUser_info().getNickname());
-            mmkv.encode("mobile", loginBean.getData().getUser_info().getMobile());
+//            MMKV mmkv = MMKV.defaultMMKV();
+//            mmkv.encode("token", loginBean.getData().getToken().getValue());
+//            mmkv.encode("expire_time", loginBean.getData().getToken().getExpire_time());
+//            mmkv.encode("head_url", loginBean.getData().getUser_info().getHead_url());
+//            mmkv.encode("nickname", loginBean.getData().getUser_info().getNickname());
+//            mmkv.encode("mobile", loginBean.getData().getUser_info().getMobile());
+
+//            EventBus.getDefault().post(loginBean);
+//            finish();
         }
     }
 

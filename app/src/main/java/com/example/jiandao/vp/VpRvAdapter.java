@@ -2,6 +2,7 @@ package com.example.jiandao.vp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -21,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.jiandao.R;
+import com.example.jiandao.details.view.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,11 @@ public class VpRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int FIVE_TYPE=5;//跑马灯
     private OneViewHolder oneViewHolder;
     private Timer timer;
+    private OnItemClick onItemClick;
+
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
 
     public VpRvAdapter(NewsBean newsBeans, Activity context) {
         this.newsBeans = newsBeans;
@@ -116,6 +123,17 @@ public class VpRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //            fiveViewHolder.tv.setText(spannableString);
         }
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onClick(position);
+            }
+        });
+    }
+
+    public interface OnItemClick{
+        void onClick(int position);
     }
 
     @Override
@@ -212,7 +230,13 @@ public class VpRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "点击了"+banner_item+"个view", Toast.LENGTH_SHORT).show();
+                    NewsBean.DataBean.BannerListBean bannerListBean = newsBean.getData().getBanner_list().get(banner_item);
+                    String id = bannerListBean.getId();
+                    String link = bannerListBean.getLink();
+                    Intent intent = new Intent(context, DetailsActivity.class);
+                    intent.putExtra("id",id);
+                    intent.putExtra("link",link);
+                    context.startActivity(intent);
                 }
             });
         }

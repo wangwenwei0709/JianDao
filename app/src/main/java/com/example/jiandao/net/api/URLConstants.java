@@ -29,5 +29,16 @@ public class URLConstants {
     //忘记密码
     public static String SAVEPASSWORD="app/v_1_1/user/savepassword";
 
+    //专题列表
+    public static String SPECIAL_LIST="app/v_1_3/article/speciallist";
+
+    //获取跟本⽂章关联的⽂章列表
+    public static String ARTICLEACCESS="api/article/articleaccess";
+
+    //收藏和取消收藏
+    public static String USERCOLLECT="api/article/usercollect";
+
+    //⽂章是否被⽤户 点赞，点踩，收藏和⽂章相关信息
+    public static String  ARTICLEATTRIBUTE="api/article/articleattribute";
 
 }
