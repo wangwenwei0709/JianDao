@@ -24,12 +24,10 @@ public class DetailsModel extends BaseModel implements DetailsContract.IDetailsM
     }
 
     @Override
-    public <T> void collect(String id, String type, String token, INetCallBack<T> iNetCallBack) {
+    public <T> void collect(String id, int type, INetCallBack<T> iNetCallBack) {
         HashMap<String, String> commonParams = ParamsUtils.getCommonParams();
         commonParams.put("id",id);
-        commonParams.put("type",type);
-        commonParams.put("token",token);
-
+        commonParams.put("type",type+"");
         for (String key: commonParams.keySet()) {
             Log.e("TAGCOLLECT","key4="+key+",values4="+commonParams.get(key));
         }
@@ -37,14 +35,34 @@ public class DetailsModel extends BaseModel implements DetailsContract.IDetailsM
     }
 
     @Override
-    public <T> void getarticleattribute(String id, String token, INetCallBack<T> iNetCallBack) {
+    public <T> void like(String id, int type, INetCallBack<T> iNetCallBack) {
         HashMap<String, String> commonParams = ParamsUtils.getCommonParams();
         commonParams.put("id",id);
-        commonParams.put("token",token);
-
+        commonParams.put("type",type+"");
         for (String key: commonParams.keySet()) {
             Log.e("TAGCOLLECT","key4="+key+",values4="+commonParams.get(key));
         }
         NetWorkFactory.getInstance().getNetWork().post(URLConstants.ARTICLEATTRIBUTE,commonParams,iNetCallBack);
     }
+
+    @Override
+    public <T> void addUserIntegral(String id, INetCallBack<T> iNetCallBack) {
+
+    }
+
+    @Override
+    public <T> void getCommentList(String id, String start, String point_time, INetCallBack<T> iNetCallBack) {
+        HashMap<String, String> commonParams = ParamsUtils.getCommonParams();
+        commonParams.put("article_id",id);
+        commonParams.put("start",start+"");
+        commonParams.put("point_time",point_time);
+
+//        此处  -- 登录以后，  需要修改
+        for (String key: commonParams.keySet()) {
+            Log.e("TAG","key="+key+",values="+commonParams.get(key));
+        }
+        NetWorkFactory.getInstance().getNetWork().get(URLConstants.COMMENTLIST,commonParams,iNetCallBack);
+    }
+
+
 }

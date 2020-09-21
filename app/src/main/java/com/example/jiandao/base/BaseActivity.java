@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView{
@@ -18,6 +20,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         ButterKnife.bind(this);
         mPresenter = initPresenter();
         mPresenter.AttachView(this);
+        HashMap<String,String> hashMap = new HashMap<>();
+        hashMap.put("moblie","133456563");
         initView();
         initData();
         initListener();

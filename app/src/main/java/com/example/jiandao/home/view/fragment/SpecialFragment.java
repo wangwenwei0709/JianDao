@@ -1,24 +1,15 @@
 package com.example.jiandao.home.view.fragment;
 
-import android.content.Intent;
 import android.view.View;
 
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jiandao.R;
-import com.example.jiandao.base.BaseFragment;
 import com.example.jiandao.base.BaseLazyFragment;
-import com.example.jiandao.details.view.DetailsActivity;
 import com.example.jiandao.special.SpecialBean;
 import com.example.jiandao.special.SpecialContract;
 import com.example.jiandao.special.SpecialFragmentPresenter;
 import com.example.jiandao.special.SpecialRvAdapter;
-import com.example.jiandao.vp.NewsBean;
-
-import butterknife.BindView;
 
 public class SpecialFragment extends BaseLazyFragment<SpecialFragmentPresenter> implements SpecialContract.ISpecialFragmentView {
 
@@ -58,12 +49,12 @@ public class SpecialFragment extends BaseLazyFragment<SpecialFragmentPresenter> 
 
     @Override
     public void setSpecialList(SpecialBean specialBean) {
-        rvSpecial.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvSpecial.addItemDecoration(new DividerItemDecoration(getContext(), OrientationHelper.VERTICAL));
-        adapter = new SpecialRvAdapter(specialBean, getActivity());
-        rvSpecial.setAdapter(adapter);
+//        rvSpecial.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        rvSpecial.addItemDecoration(new DividerItemDecoration(getContext(), OrientationHelper.VERTICAL));
+//        adapter = new SpecialRvAdapter(specialBean, getActivity());
+//        rvSpecial.setAdapter(adapter);
 
-        adapter.setOnItemClick(new SpecialRvAdapter.OnItemClick() {
+        /*adapter.setOnItemClick(new SpecialRvAdapter.OnItemClick() {
             @Override
             public void onClick(int position) {
                 SpecialBean.DataBean.ListBean listBean = specialBean.getData().getList().get(position);
@@ -74,6 +65,6 @@ public class SpecialFragment extends BaseLazyFragment<SpecialFragmentPresenter> 
                 intent.putExtra("link",link);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }

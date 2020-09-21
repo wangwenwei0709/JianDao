@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView{
 
@@ -42,9 +41,5 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     protected abstract void initData();
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mPresenter.disAttachView();
-    }
+
 }

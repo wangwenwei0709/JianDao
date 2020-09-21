@@ -41,4 +41,7 @@ public class URLConstants {
     //⽂章是否被⽤户 点赞，点踩，收藏和⽂章相关信息
     public static String  ARTICLEATTRIBUTE="api/article/articleattribute";
 
+    //获取文章评论列表
+    public static String COMMENTLIST = "api/comment_reply/commentlist";
+
 }

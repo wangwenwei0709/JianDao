@@ -3,6 +3,7 @@ package com.example.jiandao.details.presenter;
 import com.example.jiandao.base.BasePresenter;
 import com.example.jiandao.details.bean.ArticleAttributeBean;
 import com.example.jiandao.details.bean.CollectBean;
+import com.example.jiandao.details.bean.CommentBean;
 import com.example.jiandao.details.bean.DetailsBean;
 import com.example.jiandao.details.contract.DetailsContract;
 import com.example.jiandao.details.model.DetailsModel;
@@ -34,10 +35,10 @@ public class DetailsPresenter extends BasePresenter<DetailsContract.IDetailsView
     }
 
     @Override
-    public void collect(String id, String type, String token) {
-        iDetailsMode.collect(id, type, token, new INetCallBack<CollectBean>() {
+    public void collect(String id, int type) {
+        iDetailsMode.collect(id, type, new INetCallBack<VerfiedBean>() {
             @Override
-            public void onSuccess(CollectBean collectBean) {
+            public void onSuccess(VerfiedBean collectBean) {
                 mview.collect(collectBean);
             }
 
@@ -49,11 +50,11 @@ public class DetailsPresenter extends BasePresenter<DetailsContract.IDetailsView
     }
 
     @Override
-    public void getarticleattribute(String id, String token) {
-        iDetailsMode.getarticleattribute(id, token, new INetCallBack<ArticleAttributeBean>() {
+    public void like(String id, int type) {
+        iDetailsMode.like(id, type, new INetCallBack<VerfiedBean>() {
             @Override
-            public void onSuccess(ArticleAttributeBean articleAttributeBean) {
-                mview.getarticleattribute(articleAttributeBean);
+            public void onSuccess(VerfiedBean verfiedBean) {
+                mview.like(verfiedBean);
             }
 
             @Override
@@ -62,4 +63,26 @@ public class DetailsPresenter extends BasePresenter<DetailsContract.IDetailsView
             }
         });
     }
+
+    @Override
+    public void addUserIntegral(String id) {
+
+    }
+
+    @Override
+    public void getCommentList(String id, String start, String point_time) {
+        iDetailsMode.getCommentList(id, start, point_time, new INetCallBack<CommentBean>() {
+            @Override
+            public void onSuccess(CommentBean commentBean) {
+                mview.getCommentList(commentBean);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+        });
+    }
+
+
 }

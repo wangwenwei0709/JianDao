@@ -3,15 +3,12 @@ package com.example.jiandao.app;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.jiandao.utils.Constants;
-import com.example.jiandao.utils.SpUtil;
-import com.linsh.utilseverywhere.Utils;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.mmkv.MMKV;
 
 public class MyApplication extends Application {
 
@@ -23,16 +20,11 @@ public class MyApplication extends Application {
         super.onCreate();
         myApplication = this;
 //      初始化内存泄漏检测工具
+        MMKV.initialize(this);
         initLeakCanary();
 //        注册监听每个acitivyt的生命周期，便于栈管理
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
 
-        String token = (String) SpUtil.getParam(Constants.TOKEN, "");
-        if (TextUtils.isEmpty(token)){
-            isLogin = false;
-        }else {
-            isLogin = true;
-        }
     }
 
     ActivityLifecycleCallbacks activityLifecycleCallbacks=new ActivityLifecycleCallbacks() {
@@ -68,7 +60,7 @@ public class MyApplication extends Application {
 
         @Override
         public void onActivityDestroyed(@NonNull Activity activity) {
-
+            AppManager.getInstance().removeActivity(activity);
         }
     };
 

@@ -2,33 +2,17 @@ package com.example.jiandao.vp;
 
 
 import android.content.Intent;
-import android.graphics.Paint;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
 import com.example.jiandao.R;
-import com.example.jiandao.base.BaseFragment;
 import com.example.jiandao.base.BaseLazyFragment;
 import com.example.jiandao.details.view.DetailsActivity;
-import com.youth.banner.Banner;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import butterknife.BindView;
 import cn.jzvd.JZVideoPlayer;
 
 public class VpFragment extends BaseLazyFragment<VpPresenter> implements VpFragmentContract.INewsView {
@@ -84,12 +68,8 @@ public class VpFragment extends BaseLazyFragment<VpPresenter> implements VpFragm
         adapter.setOnItemClick(new VpRvAdapter.OnItemClick() {
             @Override
             public void onClick(int position) {
-                NewsBean.DataBean.ArticleListBean articleListBean = newsBean.getData().getArticle_list().get(position);
-                String id = articleListBean.getId();
-                String link = articleListBean.getLink();
                 Intent intent = new Intent(getContext(), DetailsActivity.class);
-                intent.putExtra("id",id);
-                intent.putExtra("link",link);
+                intent.putExtra("article",newsBean.getData().getArticle_list().get(position));
                 startActivity(intent);
             }
         });

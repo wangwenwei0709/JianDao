@@ -5,18 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".details.view.DetailsActivity">
-    <androidx.appcompat.widget.Toolbar
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/whait"
-        android:id="@+id/toolbar_details"
-        />
-    <WebView
+        android:id="@+id/title_details"
+        android:layout_height="40dp">
+        <ImageView
+            android:onClick="backBut"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/back_imag"
+            android:background="@drawable/ic_back"
+            android:scaleType="fitXY"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/seach_detail"
+            android:layout_width="40dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/ic_news_detail_search"
+            app:layout_constraintRight_toLeftOf="@id/awesome_detail"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/awesome_detail"
+            android:layout_width="40dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/ic_news_detail_like_no"
+            app:layout_constraintRight_toLeftOf="@id/collect_detail"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="40dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/ic_news_detail_collect_no"
+            app:layout_constraintRight_toLeftOf="@id/share_details"
+            android:id="@+id/collect_detail"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            android:id="@+id/share_details"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/ic_news_detail_share"
+            android:layout_height="40dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@+id/title_details"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_details"
-        android:id="@+id/web_details"/>
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/web_details"/>
+            <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toBottomOf="@id/web_details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recycleview_details"/>
+            <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toBottomOf="@id/recycleview_details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/comment_recycleview"/>
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

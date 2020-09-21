@@ -1,5 +1,9 @@
 package com.example.jiandao.net;
 
+import android.text.TextUtils;
+
+import com.tencent.mmkv.MMKV;
+
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,22 +22,18 @@ public class ParamsUtils {
 
         hashMap.put("from", "android");
         hashMap.put("lang", "zh");
-
-
         String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
         String nonce = String.valueOf((int) ((Math.random() * 9 + 1) * 100000));
-
-
         hashMap.put("nonce", nonce);
         hashMap.put("timestamp", timestamp);
         hashMap.put("signature",getSHA1(timestamp, nonce));
-/*
-        String toke = MvpUserManager.getToke();
 
-        if(!TextUtils.isEmpty(toke)){
+        MMKV toke = MMKV.defaultMMKV();
+        String token = toke.decodeString("token");
 
-            hashMap.put(RequestKey.TOKEN,toke);
-        }*/
+        if(!TextUtils.isEmpty(token)){
+            hashMap.put("token",token);
+        }
         return hashMap;
     }
 
